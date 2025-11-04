@@ -1,0 +1,24 @@
+# Ignorar a máquina virtual
+venv/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Configurações do sistema / IDE
+.vscode/
+.idea/
+
+# Arquivos do macOS e Windows
+.DS_Store
+Thumbs.db
+
+# Ambientes / dependências
+.env
+
+# Arquivos de teste temporários
+*.pytest_cache/
