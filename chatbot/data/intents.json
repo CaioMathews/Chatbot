@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "tag": "saudacao",
+      "patterns": ["Olá", "Oi", "E aí", "Bom dia", "Boa tarde"],
+      "responses": ["Olá! Como posso te ajudar?", "Oi! Tudo bem por aí?", "E aí! Pronto para conversar?"]
+    },
+    {
+      "tag": "despedida",
+      "patterns": ["Tchau", "Até mais", "Falou", "Até logo"],
+      "responses": ["Até logo!", "Tchau, volte sempre!", "Foi bom conversar com você!"]
+    },
+    {
+      "tag": "agradecimento",
+      "patterns": ["Obrigado", "Valeu", "Agradecido", "Muito obrigado"],
+      "responses": ["De nada!", "Imagina, estou aqui pra ajudar!", "Sem problemas!"]
+    }
+  ]
+}
