@@ -1,8 +1,20 @@
 from datetime import datetime
+from chatbot.structures import ChatHistory
+from chatbot.structures import find_node
+
+chat_history = ChatHistory()
 
 def log_message(sender: str, message: str):
+    
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    chat_history.insert(timestamp, f"{sender}: {message}")
 
-    with open("chat_history.txt", "a", encoding="utf-8") as f:
-        
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"[{timestamp}] {sender}: {message}\n")
+def show_history():
+    
+    print("\n===== Histórico do Chat =====")
+    chat_history.print_inorder()
+    print("=============================\n")
+
+def find_message(timestamp: str):
+
+    return chat_history.find_node(timestamp)

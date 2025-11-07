@@ -134,3 +134,24 @@ def print_inorder(root: Optional[Node]):
         print_inorder(root.left)
         print(f"{root.key}: {root.value} (altura={root.height})")
         print_inorder(root.right)
+
+
+@dataclass
+class ChatHistory:
+
+    root: Optional[Node] = None  
+    message_id: int = 0          
+
+    def add_message(self, sender: str, content: str):
+
+        self.message_id += 1
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        value = f"[{timestamp}] {sender}: {content}"
+
+        self.root = insert_node(self.root, self.message_id, value)
+
+    def get_message(self, msg_id: int) -> Optional[str]:
+        return find_node(self.root, msg_id)
+
+    def print_history(self):
+        print_inorder(self.root)
