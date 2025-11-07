@@ -7,12 +7,12 @@ chat_history = ChatHistory()
 def log_message(sender: str, message: str):
     
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    chat_history.insert(timestamp, f"{sender}: {message}")
+    chat_history.add_message(timestamp, f"{sender}: {message}")
 
 def show_history():
     
     print("\n===== Histórico do Chat =====")
-    chat_history.print_inorder()
+    chat_history.print_history()
     print("=============================\n")
 
 def find_message(timestamp: str):
