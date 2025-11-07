@@ -1,25 +1,30 @@
-from chatbot.structures import Node, insert, inorder, search
+from chatbot.structures import Node, insert_node, print_inorder, find_node
 
 def main():
     
     root = None
 
-    root = insert(root, 5, "cinco")
-    root = insert(root, 2, "dois")
-    root = insert(root, 8, "oito")
-    root = insert(root, 1, "um")
-    root = insert(root, 3, "três")
+    print("Inserindo elementos na árvore AVL:\n")
 
-    print("Percurso em-ordem da árvore:")
-    inorder(root)
+    root = insert_node(root, 5, "cinco")
+    root = insert_node(root, 2, "dois")
+    root = insert_node(root, 8, "oito")
+    root = insert_node(root, 1, "um")
+    root = insert_node(root, 3, "três")
 
-    key_to_search = 3
-    result = search(root, key_to_search)
+    print("\nPercurso em ordem (inorder):")
+    print_inorder(root)
 
-    if result:
-        print(f"\nBusca: chave {key_to_search} → valor encontrado: {result}")
-    else:
-        print(f"\nBusca: chave {key_to_search} não encontrada.")
+    print("\n🔎 Teste de busca:")
+
+    for key in [3, 4, 8]:
+
+        result = find_node(root, key)
+
+        if result:
+            print(f"  Chave {key} → valor encontrado: {result}")
+        else:
+            print(f"  Chave {key} não encontrada.")
 
 if __name__ == "__main__":
     main()
