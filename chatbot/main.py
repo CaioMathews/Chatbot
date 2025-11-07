@@ -1,5 +1,4 @@
-from chatbot.brain import get_response
-from chatbot.brain import get_intents
+from chatbot.brain import get_response, get_intents
 from chatbot.utils import log_message
 
 def main():
@@ -12,16 +11,16 @@ def main():
 
         if get_intents(user_input) == "despedida":
 
-            awnser = get_response(user_input)
-            print(f"Chatbot: {awnser}")
+            answer = get_response(user_input)
+            print(f"Chatbot: {answer}")
 
             log_message("Usuário", user_input)
-            log_message("Chatbot", awnser)
+            log_message("Chatbot", answer)
 
             break
 
         log_message("Usuário", user_input)
-
+        
         response = get_response(user_input)
 
         print(f"Chatbot: {response}")

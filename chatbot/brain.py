@@ -1,15 +1,15 @@
 from chatbot.data_loader import load_intents
-import math
+from chatbot.structures import Intent
 import random
 
 def preprocess(text):
-
+    
     text = text.lower()
 
     for ch in [".", ",", "?", "!", ";", ":"]:
         text = text.replace(ch, "")
-    return text.strip()
 
+    return text.strip()
 
 def text_similarity(a, b):
 
@@ -18,22 +18,20 @@ def text_similarity(a, b):
 
     if not a_words or not b_words:
         return 0.0
-
+    
     intersection = len(a_words & b_words)
-
     union = len(a_words | b_words)
-    
-    return intersection / union  
 
+    return intersection / union
 
-def find_best_intent(user_input, intents):
-    
+def find_best_intent(user_input: str, intents: list[Intent]):
+
     best_score = 0.0
     best_intent = None
 
     for intent in intents:
 
-        for pattern in intent["patterns"]:
+        for pattern in intent.patterns:  
 
             score = text_similarity(user_input, pattern)
 
@@ -43,23 +41,22 @@ def find_best_intent(user_input, intents):
 
     return best_intent, best_score
 
-
-def get_response(user_input):
+def get_response(user_input: str):
 
     intents = load_intents("chatbot/data/intents.json")
     best_intent, score = find_best_intent(user_input, intents)
 
     if not best_intent or score < 0.2:
         return "Desculpe, não entendi o que você quis dizer."
+    
+    return random.choice(best_intent.responses) 
 
-    return random.choice(best_intent["responses"])
-
-def get_intents(user_input):
+def get_intents(user_input: str):
 
     intents = load_intents("chatbot/data/intents.json")
-    best_intent, score = find_best_intent(user_input,intents)
+    best_intent, score = find_best_intent(user_input, intents)
 
     if not best_intent or score < 0.2:
         return "Nenhuma intenção compatível!"
     
-    return best_intent["tag"]
+    return best_intent.tag
