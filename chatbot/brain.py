@@ -45,7 +45,7 @@ def find_best_intent(user_input, intents):
 
 
 def get_response(user_input):
-    
+
     intents = load_intents("chatbot/data/intents.json")
     best_intent, score = find_best_intent(user_input, intents)
 
@@ -53,3 +53,13 @@ def get_response(user_input):
         return "Desculpe, não entendi o que você quis dizer."
 
     return random.choice(best_intent["responses"])
+
+def get_intents(user_input):
+
+    intents = load_intents("chatbot/data/intents.json")
+    best_intent, score = find_best_intent(user_input,intents)
+
+    if not best_intent or score < 0.2:
+        return "Nenhuma intenção compatível!"
+    
+    return best_intent["tag"]

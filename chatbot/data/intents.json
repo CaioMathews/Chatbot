@@ -7,8 +7,8 @@
     },
     {
       "tag": "despedida",
-      "patterns": ["Tchau", "Até mais", "Falou", "Até logo"],
-      "responses": ["Até logo!", "Tchau, volte sempre!", "Foi bom conversar com você!"]
+      "patterns": ["Tchau", "Até mais", "Falou", "Até logo","Sair","Exit"],
+      "responses": ["Até logo! 👋", "Tchau , volte sempre!", "Foi bom conversar com você!"]
     },
     {
       "tag": "agradecimento",

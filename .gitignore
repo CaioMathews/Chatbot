@@ -22,3 +22,9 @@ Thumbs.db
 
 # Arquivos de teste temporários
 *.pytest_cache/
+
+# Ignorar histórico do chatbot
+chatbot_history.txt
+
+# Ignorar histórico dentro da pasta chatbot
+chatbot/chatbot_history.txt

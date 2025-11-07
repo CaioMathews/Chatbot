@@ -1,4 +1,6 @@
 from chatbot.brain import get_response
+from chatbot.brain import get_intents
+from chatbot.utils import log_message
 
 def main():
 
@@ -6,16 +8,24 @@ def main():
 
     while True:
 
-        user_input = input("Você: ")
+        user_input = input("Você: ").strip()
 
-        if user_input.lower() in ["sair", "exit", "quit"]:
+        if get_intents(user_input) == "despedida":
 
-            print("Chatbot: Até logo! 👋")
+            awnser = get_response(user_input)
+            print(f"Chatbot: {awnser}")
+
+            log_message("Usuário", user_input)
+            log_message("Chatbot", awnser)
+
             break
 
+        log_message("Usuário", user_input)
+
         response = get_response(user_input)
-        
-        print(f"Chatbot: {response}\n")
+
+        print(f"Chatbot: {response}")
+        log_message("Chatbot", response)
 
 if __name__ == "__main__":
     main()
